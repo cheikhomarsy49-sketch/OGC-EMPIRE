@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#17251f">
+<meta name="description" content="OGC EMPIRE — Boutique en ligne au Sénégal. Maillots, montres, parfums, accessoires hijab et pantalons.">
+<link rel="manifest" href="manifest.json">
+<title>OGC EMPIRE — Boutique Sénégal</title>
+<style>
+:root{--green:#17251f;--green2:#263b31;--gold:#d5b36a;--cream:#f7f5ef;--ink:#17211c;--muted:#66716a;--line:#e4e5df;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit}button{cursor:pointer}.top{background:var(--green);color:white;padding:18px max(16px,calc((100% - 1100px)/2));}
+.brand{display:flex;align-items:center;gap:12px}.logo{background:var(--gold);color:var(--green);font-weight:900;border-radius:12px;padding:12px;font-size:18px}.brand h1{font-size:20px;margin:0}.brand small{color:var(--gold);letter-spacing:2px}
+.hero{max-width:1100px;margin:0 auto;padding:32px 16px 20px}.hero h2{font-size:clamp(28px,5vw,46px);line-height:1.05;margin:0 0 10px}.hero p{color:var(--muted);max-width:620px;line-height:1.6}.tools{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.tools input{flex:1;min-width:180px}.field{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:white;color:var(--ink)}
+.wrap{max-width:1100px;margin:auto;padding:0 16px 36px}.categories{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 20px}.chip{border:1px solid #d4d8d2;border-radius:999px;padding:9px 14px;background:white;color:var(--ink)}.chip.active{background:var(--green);color:white;border-color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}.photo{height:145px;background:linear-gradient(135deg,#e8e6dd,#d8dfd7);display:flex;align-items:center;justify-content:center;font-size:48px}.cardbody{padding:13px;display:flex;flex-direction:column;gap:7px;flex:1}.card h3{margin:0;font-size:16px}.desc{font-size:13px;color:var(--muted);min-height:34px}.price{font-size:18px;font-weight:800;color:#866324}.stock{font-size:12px;color:var(--muted)}.btn{border:0;background:var(--green);color:white;padding:12px 14px;border-radius:11px;font-weight:700}.btn.gold{background:var(--gold);color:var(--green)}.btn.outline{background:white;border:1px solid var(--line);color:var(--ink)}.card .btn{margin-top:auto}.sectiontitle{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 12px}.sectiontitle h2{margin:0;font-size:22px}.basketcount{background:var(--gold);border-radius:99px;padding:3px 8px;font-size:12px;color:var(--green)}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:16px;margin-top:22px}.panel h2{margin:0 0 14px}.cartline{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}.cartline:last-child{border-bottom:0}.small{font-size:13px;color:var(--muted)}.checkout{display:grid;grid-template-columns:1fr;gap:12px}.fieldlabel{display:block;font-size:13px;font-weight:700;margin-bottom:5px}.total{font-weight:900;font-size:20px}.footer{background:var(--green);color:white;padding:25px 16px;text-align:center}.footer span{color:var(--gold)}.notice{font-size:13px;background:#f5efdd;padding:12px;border-radius:10px;color:#594b2c;line-height:1.5}.hidden{display:none!important}
+@media(min-width:640px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.photo{height:190px}.checkout{grid-template-columns:1fr 1fr}.grid .card:last-child:nth-child(3n+1){grid-column:auto}}
+@media(min-width:900px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand"><div class="logo">OGC</div><div><h1>OGC EMPIRE</h1><small>EMPIRE MODE ON</small></div><button class="btn gold" style="margin-left:auto" onclick="document.querySelector('#commande').scrollIntoView({behavior:'smooth'})">Panier <span id="count" class="basketcount">0</span></button></div></header>
+<section class="hero"><h2>Ton style.<br>Ton empire.</h2><p>Découvre nos maillots, montres, parfums, accessoires hijab et pantalons. Commande simplement depuis partout au Sénégal.</p><div class="tools"><input id="search" class="field" placeholder="Rechercher un produit…" aria-label="Rechercher un produit"></div></section>
+<main class="wrap"><div class="categories" id="categories"></div><div class="sectiontitle"><h2>Nos produits</h2><span class="small">Prix en FCFA</span></div><div class="grid" id="products"></div>
+<section class="panel" id="commande"><div class="sectiontitle" style="margin-top:0"><h2>Mon panier</h2><button class="btn outline" onclick="clearCart()">Vider</button></div><div id="cart"><p class="small">Ton panier est vide. Ajoute un produit pour préparer une commande.</p></div><div id="checkoutArea" class="hidden"><hr style="border:0;border-top:1px solid var(--line);margin:16px 0"><h3>Informations de commande</h3><div class="checkout">
+<div><label class="fieldlabel" for="customer">Nom complet</label><input class="field" id="customer" placeholder="Nom du client"></div>
+<div><label class="fieldlabel" for="phone">Téléphone du client</label><input class="field" id="phone" type="tel" placeholder="Ex. 77 123 45 67"></div>
+<div><label class="fieldlabel" for="region">Zone de livraison</label><select class="field" id="region"><option>Dakar</option><option>Thiès</option><option>Diourbel</option><option>Louga</option><option>Saint-Louis</option><option>Matam</option><option>Fatick</option><option>Kaolack</option><option>Kaffrine</option><option>Tambacounda</option><option>Kédougou</option><option>Kolda</option><option>Sédhiou</option><option>Ziguinchor</option><option>Autre</option></select></div>
+<div><label class="fieldlabel" for="address">Adresse / quartier</label><input class="field" id="address" placeholder="Quartier, repère, ville"></div>
+<div style="grid-column:1/-1"><label class="fieldlabel" for="delivery">Mode de remise</label><select class="field" id="delivery"><option>Livraison à confirmer</option><option>Retrait en main propre à convenir</option></select></div>
+</div><p class="notice" style="margin-top:14px">Les frais et délais de livraison sont confirmés avec le vendeur avant validation. Le paiement n'est pas encaissé par ce site.</p><button class="btn gold" style="width:100%;margin-top:12px" onclick="orderWhatsApp()">Commander sur WhatsApp</button></div></section>
+<section class="panel"><h2>Besoin d'un renseignement ?</h2><p class="small">Écris-nous pour vérifier les tailles, les stocks, les prix et la livraison.</p><a class="btn" style="display:inline-block;text-decoration:none" href="https://wa.me/221786266263" target="_blank" rel="noopener">Contacter OGC EMPIRE sur WhatsApp</a></section>
+</main><footer class="footer"><strong>OGC EMPIRE</strong><p><span>EMPIRE MODE ON</span></p><small>Dakar, Sénégal · Livraison à confirmer selon la destination</small></footer>
+<script>
+const WA_NUMBER='221786266263';
+const categories=['Tout','Maillots','Montres','Parfums','Hijab','Vêtements'];
+// Remplace les prix provisoires et les descriptions après confirmation des coûts d'achat.
+const products=[
+{id:1,name:'Maillot de football',category:'Maillots',price:5000,emoji:'⚽',description:'Clubs et équipes nationales · selon stock',cost:3250},
+{id:2,name:'Montre tendance',category:'Montres',price:2500,emoji:'⌚',description:'Plusieurs modèles à découvrir',cost:null},
+{id:3,name:'Parfum',category:'Parfums',price:2000,emoji:'🧴',description:'Pour homme et femme',cost:null},
+{id:4,name:'Accessoires hijab',category:'Hijab',price:1500,emoji:'🧕',description:'Bonnets, cols et accessoires',cost:null},
+{id:5,name:'Pantalon',category:'Vêtements',price:4000,emoji:'👖',description:'Modèles selon arrivages',cost:null}
+];
+let category='Tout', cart={};
+const money=n=>new Intl.NumberFormat('fr-FR').format(n)+' FCFA';
+function renderCategories(){document.querySelector('#categories').innerHTML=categories.map(c=>`<button class="chip ${c===category?'active':''}" onclick="setCategory('${c}')">${c}</button>`).join('')}
+function setCategory(c){category=c;renderCategories();renderProducts()}
+function renderProducts(){const q=document.querySelector('#search').value.toLowerCase();const list=products.filter(p=>(category==='Tout'||p.category===category)&&(p.name+' '+p.description).toLowerCase().includes(q));document.querySelector('#products').innerHTML=list.map(p=>`<article class="card"><div class="photo" aria-label="${p.name}">${p.emoji}</div><div class="cardbody"><h3>${p.name}</h3><div class="desc">${p.description}</div><div class="price">${money(p.price)}</div><div class="stock">Disponibilité à confirmer</div><button class="btn" onclick="add(${p.id})">Ajouter au panier</button></div></article>`).join('')||'<p>Aucun produit trouvé.</p>'}
+function add(id){cart[id]=(cart[id]||0)+1;renderCart()}
+function removeItem(id){delete cart[id];renderCart()}
+function clearCart(){cart={};renderCart()}
+function renderCart(){const entries=Object.entries(cart);document.querySelector('#count').textContent=entries.reduce((s,[id,n])=>s+n,0);const el=document.querySelector('#cart');document.querySelector('#checkoutArea').classList.toggle('hidden',!entries.length);if(!entries.length){el.innerHTML='<p class="small">Ton panier est vide. Ajoute un produit pour préparer une commande.</p>';return}let total=0;el.innerHTML=entries.map(([id,n])=>{const p=products.find(x=>x.id===+id);total+=p.price*n;return `<div class="cartline"><div><strong>${p.name}</strong><div class="small">${money(p.price)} × ${n}</div><div style="display:flex;gap:7px;margin-top:7px"><button class="chip" onclick="add(${p.id})">+</button><button class="chip" onclick="cart[${p.id}]>1?(cart[${p.id}]--,renderCart()):removeItem(${p.id})">−</button></div></div><strong>${money(p.price*n)}</strong></div>`}).join('')+`<div class="cartline"><strong>Total produits</strong><span class="total">${money(total)}</span></div>`}
+function orderWhatsApp(){const entries=Object.entries(cart);if(!entries.length){alert('Ajoute au moins un produit.');return}const name=document.querySelector('#customer').value.trim();const phone=document.querySelector('#phone').value.trim();const address=document.querySelector('#address').value.trim();const region=document.querySelector('#region').value;const delivery=document.querySelector('#delivery').value;if(!name||!phone||!address){alert('Merci de remplir le nom, le téléphone et l’adresse ou le quartier.');return}let total=0;const lines=entries.map(([id,n])=>{const p=products.find(x=>x.id===+id);total+=p.price*n;return `- ${p.name} x${n} : ${money(p.price*n)}`});const msg=`Bonjour OGC EMPIRE, je souhaite commander :\n\n${lines.join('\n')}\n\nTotal produits : ${money(total)}\nNom : ${name}\nTéléphone : ${phone}\nDestination : ${region}\nAdresse / quartier : ${address}\nRemise : ${delivery}\n\nMerci de confirmer le stock, les frais de livraison et le montant final.`;window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`,'_blank','noopener')}
+document.querySelector('#search').addEventListener('input',renderProducts);
+renderCategories();renderProducts();renderCart();
+if('serviceWorker' in navigator && location.protocol.startsWith('http')) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script></body></html>
