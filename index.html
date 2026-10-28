@@ -38,28 +38,7 @@ const WA_NUMBER='221785266263';
 const categories=[ 
 'Tout','Maillots','Montres','Parfums','Hijab','Vêtements'];
 // Remplace les prix provisoires et les descriptions après confirmation des coûts d'achat.
-const products=[
-,
-{id:20,name:"Montre tendance",category:"Montres",price:2000,emoji:"⌚",description:"Montres pour hommes et femmes"},
-{id:21,name:"Parfum homme",category:"Parfums",price:2000,emoji:"🧴",description:"Parfums pour homme"},
-{id:22,name:"Parfum femme",category:"Parfums",price:2000,emoji:"🌸",description:"Parfums pour femme"},
-{id:23,name:"Pantalon",category:"Vêtements",price:4000,emoji:"👖",description:"Pantalons selon les modèles"},
-{id:24,name:"T-shirt",category:"Vêtements",price:3000,emoji:"👕",description:"T-shirts tendance"},
-{id:25,name:"Robe hijab",category:"Hijab",price:7000,emoji:"🧕",description:"Robes longues et pudiques"},
-{id:26,name:"Bonnet hijab",category:"Hijab",price:1000,emoji:"🧕",description:"Bonnets pour hijabistes"},
-{id:27,name:"Col hijab",category:"Hijab",price:1500,emoji:"🧕",description:"Cols couvrants"},
-{id:28,name:"Collant",category:"Hijab",price:2000,emoji:"🧕",description:"Collants selon les modèles"},
-{id:29,name:"Accessoires hijab",category:"Hijab",price:1500,emoji:"✨",description:"Accessoires pour hijabistes"},
-{id:30,name:"Maillot Barça",category:"Maillots",price:5000,emoji:"⚽",description:"Maillot du FC Barcelone"},
-{id:31,name:"Maillot Real Madrid",category:"Maillots",price:5000,emoji:"⚽",description:"Maillot du Real Madrid"},
-{id:32,name:"Maillot PSG",category:"Maillots",price:6000,emoji:"⚽",description:"Maillot du Paris Saint-Germain"}
-
-
-{id:1,name:'Maillot de football',category:'Maillots',price:5000,emoji:'⚽',description:'Clubs et équipes nationales · selon stock',cost:3250},
-{id:2,name:'Montre tendance',category:'Montres',price:2500,emoji:'⌚',description:'Plusieurs modèles à découvrir',cost:null},
-{id:3,name:'Parfum',category:'Parfums',price:2000,emoji:'🧴',description:'Pour homme et femme',cost:null},
-{id:4,name:'Accessoires hijab',category:'Hijab',price:1500,emoji:'🧕',description:'Bonnets, cols et accessoires',cost:null},
-{id:5,name:'Pantalon',category:'Vêtements',price:4000,emoji:'👖',description:'Modèles selon arrivages',cost:null}
+const products=[ 
 ];
 let category='Tout', cart={};
 const money=n=>new Intl.NumberFormat('fr-FR').format(n)+' FCFA';
