@@ -39,7 +39,6 @@ const categories=[
 'Tout','Maillots','Montres','Parfums','Hijab','Vêtements'];
 // Remplace les prix provisoires et les descriptions après confirmation des coûts d'achat.
 const products=[ 
-];
 let category='Tout', cart={};
 const money=n=>new Intl.NumberFormat('fr-FR').format(n)+' FCFA';
 function renderCategories(){document.querySelector('#categories').innerHTML=categories.map(c=>`<button class="chip ${c===category?'active':''}" onclick="setCategory('${c}')">${c}</button>`).join('')}
