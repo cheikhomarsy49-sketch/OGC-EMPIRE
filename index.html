@@ -1,1 +1,238 @@
 index.html
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>OGC EMPIRE | Boutique</title>
+
+  <style>
+
+    * { box-sizing: border-box; }
+
+    body {
+
+      margin: 0;
+
+      font-family: Arial, sans-serif;
+
+      background: #f5f3ef;
+
+      color: #171717;
+
+    }
+
+    header {
+
+      background: #111;
+
+      color: #d8b45a;
+
+      text-align: center;
+
+      padding: 28px 15px;
+
+    }
+
+    header h1 { margin: 0; letter-spacing: 3px; }
+
+    header p { color: white; margin-bottom: 0; }
+
+    nav {
+
+      background: #d8b45a;
+
+      padding: 12px;
+
+      text-align: center;
+
+    }
+
+    nav a {
+
+      color: #111;
+
+      margin: 0 8px;
+
+      font-weight: bold;
+
+      text-decoration: none;
+
+    }
+
+    .intro { text-align: center; padding: 28px 15px; }
+
+    .intro h2 { margin-bottom: 8px; }
+
+    .products {
+
+      display: grid;
+
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 14px;
+
+      padding: 15px;
+
+      max-width: 900px;
+
+      margin: auto;
+
+    }
+
+    .product {
+
+      background: white;
+
+      border-radius: 12px;
+
+      padding: 18px 10px;
+
+      text-align: center;
+
+      box-shadow: 0 2px 8px #00000012;
+
+    }
+
+    .emoji { font-size: 42px; }
+
+    .product h3 { margin: 10px 0 6px; }
+
+    .product p { color: #666; font-size: 14px; }
+
+    .contact {
+
+      display: block;
+
+      background: #111;
+
+      color: #d8b45a;
+
+      padding: 12px;
+
+      border-radius: 8px;
+
+      text-decoration: none;
+
+      font-weight: bold;
+
+    }
+
+    footer {
+
+      background: #111;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 22px;
+
+      margin-top: 25px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>OGC EMPIRE</h1>
+
+    <p>EMPIRE MODE ON — Dakar, Sénégal</p>
+
+  </header>
+
+  <nav>
+
+    <a href="#produits">Nos produits</a>
+
+    <a href="#contact">Contact</a>
+
+  </nav>
+
+  <section class="intro">
+
+    <h2>Bienvenue chez OGC EMPIRE</h2>
+
+    <p>Le style, la qualité et l'élégance à votre portée.</p>
+
+  </section>
+
+  <main id="produits" class="products">
+
+    <article class="product">
+
+      <div class="emoji">⚽</div>
+
+      <h3>Maillots</h3>
+
+      <p>Maillots de clubs et de sélections.</p>
+
+    </article>
+
+    <article class="product">
+
+      <div class="emoji">⌚</div>
+
+      <h3>Montres</h3>
+
+      <p>Des montres pour tous les styles.</p>
+
+    </article>
+
+    <article class="product">
+
+      <div class="emoji">🧴</div>
+
+      <h3>Parfums</h3>
+
+      <p>Des senteurs pour hommes et femmes.</p>
+
+    </article>
+
+    <article class="product">
+
+      <div class="emoji">🧕</div>
+
+      <h3>Accessoires hijab</h3>
+
+      <p>Les essentiels pour votre élégance.</p>
+
+    </article>
+
+    <article class="product">
+
+      <div class="emoji">👖</div>
+
+      <h3>Pantalons</h3>
+
+      <p>Des modèles pour votre quotidien.</p>
+
+    </article>
+
+  </main>
+
+  <section id="contact" class="intro">
+
+    <h2>Commandez chez OGC EMPIRE</h2>
+
+    <p>Contactez-nous pour connaître les prix et la disponibilité.</p>
+
+    <a class="contact" href="https://wa.me/221">Nous contacter sur WhatsApp</a>
+
+  </section>
+
+  <footer>© OGC EMPIRE — Tous droits réservés</footer>
+
+</body>
+
+</html>
