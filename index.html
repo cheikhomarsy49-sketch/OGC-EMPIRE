@@ -38,7 +38,171 @@ const WA_NUMBER='221785266263';
 const categories= [
 'Tout','Maillots','Montres','Parfums','Hijab','Vêtements'];
 // Remplace les prix provisoires et les descriptions après confirmation des coûts d'achat.
-const products=[ 
+const products=[ const products = [
+
+  {
+
+    id: 1,
+
+    name: "Maillot FC Barcelone",
+
+    category: "Maillots",
+
+    description: "Maillot de club",
+
+    price: 5000,
+
+    emoji: "⚽"
+
+  },
+
+  {
+
+    id: 2,
+
+    name: "Maillot Real Madrid",
+
+    category: "Maillots",
+
+    description: "Maillot de club",
+
+    price: 5000,
+
+    emoji: "⚽"
+
+  },
+
+  {
+
+    id: 3,
+
+    name: "Maillot Olympique Lyonnais",
+
+    category: "Maillots",
+
+    description: "Maillot de club",
+
+    price: 5000,
+
+    emoji: "⚽"
+
+  },
+
+  {
+
+    id: 4,
+
+    name: "Maillot Olympique de Marseille",
+
+    category: "Maillots",
+
+    description: "Maillot de club",
+
+    price: 5000,
+
+    emoji: "⚽"
+
+  },
+
+  {
+
+    id: 5,
+
+    name: "Maillot Santos",
+
+    category: "Maillots",
+
+    description: "Maillot de club",
+
+    price: 5000,
+
+    emoji: "⚽"
+
+  },
+
+  {
+
+    id: 6,
+
+    name: "Montre tendance",
+
+    category: "Montres",
+
+    description: "Montre pour homme ou femme",
+
+    price: 2500,
+
+    emoji: "⌚"
+
+  },
+
+  {
+
+    id: 7,
+
+    name: "Parfum",
+
+    category: "Parfums",
+
+    description: "Parfum pour homme ou femme",
+
+    price: 2000,
+
+    emoji: "🧴"
+
+  },
+
+  {
+
+    id: 8,
+
+    name: "Bonnet hijab",
+
+    category: "Hijab",
+
+    description: "Accessoire hijabiste",
+
+    price: 1000,
+
+    emoji: "🧕"
+
+  },
+
+  {
+
+    id: 9,
+
+    name: "Accessoires hijab",
+
+    category: "Hijab",
+
+    description: "Accessoires pour hijabistes",
+
+    price: 1500,
+
+    emoji: "🧕"
+
+  },
+
+  {
+
+    id: 10,
+
+    name: "Pantalon tendance",
+
+    category: "Vêtements",
+
+    description: "Pantalon moderne",
+
+    price: 4000,
+
+    emoji: "👖"
+
+  }
+
+];
+
+let category = "Tout", cart = {};
 let category='Tout', cart={};
 const money=n=>new Intl.NumberFormat('fr-FR').format(n)+' FCFA';
 function renderCategories(){document.querySelector('#categories').innerHTML=categories.map(c=>`<button class="chip ${c===category?'active':''}" onclick="setCategory('${c}')">${c}</button>`).join('')}
