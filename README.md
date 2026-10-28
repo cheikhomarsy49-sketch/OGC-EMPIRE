@@ -9,7 +9,6 @@ Première version web responsive, sans dépendances ni frais de logiciel.
 - Création d'un message WhatsApp vers +221 78 626 62 63
 - Interface responsive pour mobile et ordinateur
 - Manifest/service worker de base pour installation sur appareils compatibles
-
 ## Prix de démonstration à valider avant publication
 - Maillot : 5 000 FCFA (coût connu : 3 250 FCFA)
 - Montre : 2 500 FCFA (coût à confirmer)
