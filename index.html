@@ -232,7 +232,165 @@ index.html
   </section>
 
   <footer>© OGC EMPIRE — Tous droits réservés</footer>
+<section id="ogc-panier" style="background:#111;color:white;padding:20px;margin:20px auto;border:1px solid #c9a227;border-radius:12px;max-width:600px;font-family:Arial,sans-serif">
 
+  <h2 style="color:#d4af37;text-align:center">🛒 Mon panier OGC EMPIRE</h2>
+
+  <label for="ogc-produit">Choisis ton produit :</label>
+
+  <select id="ogc-produit" style="width:100%;padding:12px;margin:10px 0">
+
+    <option value="Maillot|5000">Maillot — 5 000 FCFA</option>
+
+    <option value="Montre|2000">Montre — 2 000 FCFA</option>
+
+    <option value="Parfum|2000">Parfum — 2 000 FCFA</option>
+
+    <option value="Accessoire hijab|2000">Accessoire hijab — 2 000 FCFA</option>
+
+    <option value="Pantalon|5000">Pantalon — 5 000 FCFA</option>
+
+  </select>
+
+  <label for="ogc-quantite">Quantité :</label>
+
+  <input id="ogc-quantite" type="number" min="1" step="1" value="1" style="width:100%;box-sizing:border-box;padding:12px;margin:10px 0"/>
+
+  <button type="button" onclick="ogcAjouter()" style="width:100%;padding:13px;background:#d4af37;color:#111;border:0;border-radius:8px;font-weight:bold">Ajouter au panier</button>
+
+  <div id="ogc-liste" style="margin-top:18px">Ton panier est vide.</div>
+
+  <h3 id="ogc-total">Total : 0 FCFA</h3>
+
+  <label for="ogc-client">Ton nom (facultatif) :</label>
+
+  <input id="ogc-client" type="text" placeholder="Nom du client" style="width:100%;box-sizing:border-box;padding:12px;margin:10px 0"/>
+
+  <button type="button" onclick="ogcCommander()" style="width:100%;padding:14px;background:#25D366;color:white;border:0;border-radius:8px;font-weight:bold">Envoyer ma commande sur WhatsApp</button>
+
+  <p style="font-size:12px;color:#ccc">Les frais de livraison éventuels seront confirmés sur WhatsApp.</p>
+
+</section>
+
+<script>
+
+(function () {
+
+  let panier = [];
+
+  const fcfa = n => n.toLocaleString("fr-FR") + " FCFA";
+
+  window.ogcAjouter = function () {
+
+    const select = document.getElementById("ogc-produit");
+
+    const [nom, prix] = select.value.split("|");
+
+    const q = Number(document.getElementById("ogc-quantite").value);
+
+    if (!Number.isInteger(q) || q < 1) {
+
+      alert("Choisis une quantité entière supérieure à zéro.");
+
+      return;
+
+    }
+
+    const article = panier.find(p => p.nom === nom);
+
+    if (article) article.q += q;
+
+    else panier.push({nom:nom, prix:Number(prix), q:q});
+
+    ogcAfficher();
+
+  };
+
+  window.ogcSupprimer = function (i) {
+
+    panier.splice(i, 1);
+
+    ogcAfficher();
+
+  };
+
+  function ogcAfficher() {
+
+    const liste = document.getElementById("ogc-liste");
+
+    liste.replaceChildren();
+
+    if (!panier.length) {
+
+      liste.textContent = "Ton panier est vide.";
+
+    } else {
+
+      panier.forEach((p, i) => {
+
+        const ligne = document.createElement("div");
+
+        ligne.style.cssText = "padding:10px 0;border-bottom:1px solid #555";
+
+        const texte = document.createElement("span");
+
+        texte.textContent = p.nom + " × " + p.q + " = " + fcfa(p.prix * p.q) + " ";
+
+        const supprimer = document.createElement("button");
+
+        supprimer.type = "button";
+
+        supprimer.textContent = "Retirer";
+
+        supprimer.onclick = () => window.ogcSupprimer(i);
+
+        ligne.append(texte, supprimer);
+
+        liste.appendChild(ligne);
+
+      });
+
+    }
+
+    document.getElementById("ogc-total").textContent =
+
+      "Total : " + fcfa(panier.reduce((s, p) => s + p.prix * p.q, 0));
+
+  }
+
+  window.ogcCommander = function () {
+
+    if (!panier.length) {
+
+      alert("Ajoute au moins un produit à ton panier.");
+
+      return;
+
+    }
+
+    const nom = document.getElementById("ogc-client").value.trim();
+
+    const total = panier.reduce((s, p) => s + p.prix * p.q, 0);
+
+    let message = "Bonjour OGC EMPIRE, je souhaite commander :\n";
+
+    if (nom) message += "Nom : " + nom + "\n";
+
+    panier.forEach(p => {
+
+      message += "- " + p.nom + " x" + p.q + " : " + fcfa(p.prix * p.q) + "\n";
+
+    });
+
+    message += "Total : " + fcfa(total) + "\nMerci !";
+
+    window.open("https://wa.me/221785266263?text=" + encodeURIComponent(message), "_blank");
+
+  };
+
+})();
+
+</script>
 </body>
 
 </html><a href="https://wa.me/221785266263" style="display:block;background:#25D366;color:white;text-align:center;padding:15px;margin:20px;border-radius:10px;text-decoration:none;font-weight:bold;">Commander sur WhatsApp</a>
