@@ -6,7 +6,7 @@ Première version web responsive, sans dépendances ni frais de logiciel.
 - Catalogue avec catégories et recherche
 - Panier et calcul du total
 - Formulaire de commande
-- Création d'un message WhatsApp vers +221 78 626 62 63
+- Création d'un message WhatsApp vers +221 78 526 62 63
 - Interface responsive pour mobile et ordinateur
 - Manifest/service worker de base pour installation sur appareils compatibles
 ## Prix de démonstration à valider avant publication
